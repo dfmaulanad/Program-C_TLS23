@@ -1,0 +1,98 @@
+#include <iostream>
+using namespace std;
+
+int denyut, darah, napas, suhu;
+int nilaiDenyut, nilaiDarah, nilaiNapas, nilaiSuhu;
+int sumNilaiDenyut, sumNilaiDarah, sumNilaiNapas, sumNilaiSuhu;
+int point, sumPoint, avgPoint;
+char nilai;
+
+int main() {
+
+
+    cout << "PROGRAM MENGECEK KONDISI KESEHATAN MANUSIA" << endl;
+    cout << "==========================================" << endl;
+
+    cout << endl;
+
+    cout << "indikator kesehatan manusia :  " << endl;
+    cout << "Suhu normal 36-37°C" << endl;
+    cout << "Denyut normal 60-100 denyut per menit" << endl;
+    cout << "Tekanan darah normal 120/80 mmHg" << endl;
+    cout << "Pernapasan normal 12-20 kali per menit" << endl;
+    
+    cout << endl;
+    cout << "==========================================" << endl;
+    cout << endl;
+
+    for(int i = 0; i < 1; i++)
+    {
+        cout << "Masukkan suhu tubuh (°C): ";
+        cin >> suhu;
+        cout << "Masukkan denyut jantung : ";
+        cin >> denyut;
+        cout << "Masukkan tekanan darah  : ";
+        cin >> darah;
+        cout << "Masukkan pernapasan     : ";
+        cin >> napas;
+        
+        cout << endl;
+        cout << endl;
+
+        if (suhu < 32){
+            nilaiSuhu = 2;
+        } else if (suhu >= 35 && suhu <= 39){
+            nilaiSuhu = 8;
+        } else if (suhu >= 40){
+            nilaiSuhu = 2;
+        }
+
+        if (denyut < 60){
+            nilaiDenyut = 2;
+        } else if (denyut >= 60 && denyut <= 100){
+            nilaiDenyut = 8;
+        } else if (denyut > 100){
+            nilaiDenyut = 4;
+        }
+
+        if (darah < 110){
+            nilaiDarah = 3;
+        } else if (darah >= 110 && darah <= 130){
+            nilaiDarah = 9;
+        } else if (darah > 130){
+            nilaiDarah = 3;
+        }
+
+        if (napas < 12){
+            nilaiNapas = 3;
+        } else if (napas >= 12 && napas <= 20){
+            nilaiNapas = 8;
+        } else if (napas > 20){
+            nilaiNapas = 3;
+        }
+
+        sumNilaiSuhu += nilaiSuhu;
+        sumNilaiDenyut += nilaiDenyut;
+        sumNilaiDarah += nilaiDarah;
+        sumNilaiNapas += nilaiNapas;
+
+        point = (sumNilaiDenyut + sumNilaiDarah + sumNilaiNapas + sumNilaiSuhu)/4;
+        sumPoint = sumPoint + point;
+
+    }
+
+    avgPoint = sumPoint/10;
+
+    cout << endl;
+    cout << endl;
+    
+    if (avgPoint < 5){
+        cout << "Kondisi tubuh kamu sangat buruk";
+    } else if (avgPoint < 8){
+        cout << "Kondisi tubuh kamu kurang normal";
+    } else if (avgPoint < 10){
+        cout << "Kondisi tubuh kamu normal";
+    }
+
+    return 0;
+}
